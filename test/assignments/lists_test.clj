@@ -28,3 +28,9 @@
     (is (= true (every?' even? [2 4 6 8]))))
   (testing "not all even"
     (is (= false (every?' even? [2 4 1 8])))))
+
+(deftest some-test
+  (testing "all even"
+    (is (= true (some?' even? [1 3 5 6]))))
+  (testing "all odd"
+    (is (= false (some?' even? [1 3 5 7])))))
