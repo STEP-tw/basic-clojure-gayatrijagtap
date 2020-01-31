@@ -16,3 +16,9 @@
 (deftest count-test
   (testing "count elements in coll"
     (is (= 4 (count' [1 2 3 4])))))
+
+(deftest reverse-test
+  (testing "valid sequence"
+    (is (= [4 3 2 1] (reverse' [1 2 3 4]))))
+  (testing "invalid sequence"
+    (is (= nil (reverse' 1)))))

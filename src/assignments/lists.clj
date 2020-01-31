@@ -56,8 +56,17 @@
   {:level        :easy
    :use          '[reduce conj seqable? when]
    :dont-use     '[reverse]
-   :implemented? false}
-  ([coll]))
+   :implemented? true}
+  [coll]
+  (loop [acc `() coll coll]
+    (if (seqable? coll)
+      (let [curr-ele (first coll)]
+        (if (empty? coll)
+          acc
+          (recur (conj acc curr-ele) (rest coll))))
+      nil)
+    )
+  )
 
 (defn every?'
   "Implement your own version of every? that checks if every
