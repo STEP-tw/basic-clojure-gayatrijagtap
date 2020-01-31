@@ -73,3 +73,7 @@
 (deftest zero-separated-palindrome-test
   (testing "zero-seperated-palindrome"
     (is (= `(4 3 2 0 2 3 4) (zero-separated-palindrome [1 2 3])))))
+
+(deftest repeat-and-truncate-test
+  (testing "repeat-and-truncate"
+    (is (= `(1 2 3 1 2 3) (repeat-and-truncate [1 2 3] true true 6)))))
