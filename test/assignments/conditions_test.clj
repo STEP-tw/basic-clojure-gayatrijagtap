@@ -57,3 +57,15 @@
                [:z-greater-than-x] (order-in-words 2 3 4)
                ))
   )
+
+(deftest zero-aliases-test
+  (testing "zero-aliases"
+    (are [x y] (= x y)
+               :zero (zero-aliases 0)
+               :empty-string (zero-aliases "")
+               :empty (zero-aliases [])
+               :empty-set (zero-aliases #{})
+               :empty-map (zero-aliases {})
+               :empty (zero-aliases `())
+               ))
+  )
