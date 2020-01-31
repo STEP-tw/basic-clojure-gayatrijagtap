@@ -12,3 +12,7 @@
     (is (= [2 4] (filter' even? [1 2 3 4]))))
   (testing "filter odds"
     (is (= [1 3] (filter' odd? [1 2 3 4])))))
+
+(deftest count-test
+  (testing "count elements in coll"
+    (is (= 4 (count' [1 2 3 4])))))
