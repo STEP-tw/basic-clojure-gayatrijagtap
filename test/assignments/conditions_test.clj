@@ -31,3 +31,10 @@
   (testing "nil value"
     (is (= :ashwathama (yudishtira nil))))
   )
+
+(deftest duplicate-first-test
+  (testing "non-empty-coll"
+    (is (= [1 1 2 3] (duplicate-first [1 2 3]))))
+  (testing "empty-coll"
+    (is (= nil (duplicate-first []))))
+  )
