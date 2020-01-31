@@ -22,3 +22,9 @@
     (is (= [4 3 2 1] (reverse' [1 2 3 4]))))
   (testing "invalid sequence"
     (is (= nil (reverse' 1)))))
+
+(deftest every-test
+  (testing "all even"
+    (is (= true (every?' even? [2 4 6 8]))))
+  (testing "not all even"
+    (is (= false (every?' even? [2 4 1 8])))))
