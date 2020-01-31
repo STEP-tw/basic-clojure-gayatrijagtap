@@ -124,5 +124,9 @@
   [1 2 3] -> (4 3 2 0 2 3 4)"
   {:level        :easy
    :use          '[as-> reverse]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll]
+  (as-> coll x
+        (map inc x)
+        (concat (reverse x) [0] x)
+        ))
