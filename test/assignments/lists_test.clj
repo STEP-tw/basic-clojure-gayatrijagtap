@@ -34,3 +34,9 @@
     (is (= true (some?' even? [1 3 5 6]))))
   (testing "all odd"
     (is (= false (some?' even? [1 3 5 7])))))
+
+(deftest ascending-test
+  (testing "are ascending"
+    (is (= true (ascending? [1 2 3 4]))))
+  (testing "are not ascending"
+    (is (= false (ascending? [1 3 2 4])))))
