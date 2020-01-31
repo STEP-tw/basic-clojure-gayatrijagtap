@@ -40,11 +40,20 @@
   )
 
 (deftest five-point-someone-test
-  (testing ""
+  (testing "five-point-someone"
     (are [x y] (= x y)
-      (= :satan-bhagat (five-point-someone 5 2))
-      (= :chetan-bhagat (five-point-someone 2 5))
-      (= :greece (five-point-someone 4 2))
-      (= :universe (five-point-someone 2 4))
-      ))
+               :satan-bhagat (five-point-someone 5 2)
+               :chetan-bhagat (five-point-someone 2 5)
+               :greece (five-point-someone 4 2)
+               :universe (five-point-someone 2 4)
+               ))
+  )
+
+(deftest order-in-words-test
+  (testing "order-in-words"
+    (are [x y] (= x y)
+               [:x-greater-than-y :y-greater-than-z] (order-in-words 4 3 2)
+               [:x-greater-than-y :z-greater-than-x] (order-in-words 4 3 5)
+               [:z-greater-than-x] (order-in-words 2 3 4)
+               ))
   )
