@@ -38,3 +38,13 @@
   (testing "empty-coll"
     (is (= nil (duplicate-first []))))
   )
+
+(deftest five-point-someone-test
+  (testing ""
+    (are [x y] (= x y)
+      (= :satan-bhagat (five-point-someone 5 2))
+      (= :chetan-bhagat (five-point-someone 2 5))
+      (= :greece (five-point-someone 4 2))
+      (= :universe (five-point-someone 2 4))
+      ))
+  )
