@@ -78,9 +78,7 @@
   [pred coll]
   (loop [acc true coll coll]
     (let [curr-ele (first coll)]
-      (if (empty? coll) (and acc)
-                        (if (empty? coll) acc (recur (and acc (pred curr-ele)) (rest coll))))))
-  )
+      (if (empty? coll) acc (recur (and acc (pred curr-ele)) (rest coll))))))
 
 (defn some?'
   "Implement your own version of some that checks if at least one
