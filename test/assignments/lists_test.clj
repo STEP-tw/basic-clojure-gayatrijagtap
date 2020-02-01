@@ -71,3 +71,7 @@
 (deftest third-or-fifth-test
   (testing "third-or-fifth"
     (is (= `(0 3 5) (third-or-fifth (range 0 6))))))
+
+(deftest sqr-of-the-first-test
+  (testing "sqr-of-the-first"
+    (is (= `(16 16 16) (sqr-of-the-first [4 5 6])))))
