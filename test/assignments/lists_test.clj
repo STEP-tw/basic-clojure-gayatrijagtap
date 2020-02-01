@@ -45,6 +45,10 @@
   (testing "get elements in coll2 not in coll1"
     (are [x y] (= x y)
                `(4 3) (difference [1 2] [1 2 3 4])
-               `() (difference [1 2] [1 2])
-               ))
-  )
+               `() (difference [1 2] [1 2]))))
+
+(deftest union-test
+  (testing "union of two colls"
+    (are [x y] (= x y)
+               [1 2 3 4 5] (union [1 2 3] [3 4 5])
+               [1 2 3] (union [1 2 3] [1 2 3]))))
