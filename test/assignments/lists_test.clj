@@ -67,3 +67,7 @@
 (deftest double-up-test
   (testing "double-up"
     (is (= `(1 1 2 2 3 3) (double-up [1 2 3])))))
+
+(deftest third-or-fifth-test
+  (testing "third-or-fifth"
+    (is (= `(0 3 5) (third-or-fifth (range 0 6))))))
