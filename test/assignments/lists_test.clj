@@ -81,3 +81,10 @@
     (are [x y] (= x y)
                [1 3 2 4 5] (split-comb [1 2 3 4 5])
                [1 3 2 4] (split-comb [1 2 3 4]))))
+
+(deftest palindrome-test
+  (testing "palindrome"
+    (are [x y] (= x y)
+               true (palindrome? [1 2 3 2 1])
+               false (palindrome? [1 2 3 4 2 1])
+               true (palindrome? [1 2 3 3 2 1]))))

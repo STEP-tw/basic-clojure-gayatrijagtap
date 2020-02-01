@@ -274,8 +274,14 @@
   {:level        :easy
    :use          '[empty? loop recur butlast rest]
    :dont-use     '[reverse]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll]
+  (loop [[first-half second-half] (split-at (int (Math/floor (/ (count coll) 2))) coll)]
+    (if (empty? first-half)
+      true
+      (if (not= (first first-half) (last second-half))
+        false
+        (recur [(rest first-half) (butlast second-half)])))))
 
 (defn index-of
   "index-of takes a sequence and an element and finds the index
