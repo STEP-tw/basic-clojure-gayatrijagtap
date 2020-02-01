@@ -88,3 +88,10 @@
                true (palindrome? [1 2 3 2 1])
                false (palindrome? [1 2 3 4 2 1])
                true (palindrome? [1 2 3 3 2 1]))))
+
+(deftest index-of-test
+  (testing "index-of"
+    (are [x y] (= x y)
+               0 (index-of [1 2 3 4] 1)
+               3 (index-of [1 2 3 4] 4)
+               -1 (index-of [1 2 3 4] 9))))
