@@ -75,3 +75,9 @@
 (deftest sqr-of-the-first-test
   (testing "sqr-of-the-first"
     (is (= `(16 16 16) (sqr-of-the-first [4 5 6])))))
+
+(deftest split-comb-test
+  (testing "split-comb"
+    (are [x y] (= x y)
+               [1 3 2 4 5] (split-comb [1 2 3 4 5])
+               [1 3 2 4] (split-comb [1 2 3 4]))))
