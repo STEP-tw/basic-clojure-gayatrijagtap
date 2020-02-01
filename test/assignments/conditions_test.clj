@@ -76,4 +76,7 @@
 
 (deftest repeat-and-truncate-test
   (testing "repeat-and-truncate"
-    (is (= `(1 2 3 1 2 3) (repeat-and-truncate [1 2 3] true true 6)))))
+    (are [x y] (= x y)
+               `(1 2 3 1 2 3) (repeat-and-truncate [1 2 3] true true 6)
+               `(1 2 1 2) (repeat-and-truncate [1 2] true false 7)
+               `(1 2) (repeat-and-truncate [1 2] false true 4))))
