@@ -52,3 +52,7 @@
     (are [x y] (= x y)
                [1 2 3 4 5] (union [1 2 3] [3 4 5])
                [1 2 3] (union [1 2 3] [1 2 3]))))
+
+(deftest points-around-origin-test
+  (testing "points-around-origin"
+    (is (= `([-1 -1] [-1 0] [-1 1] [0 -1] [0 0] [0 1] [1 -1] [1 0] [1 1]) (points-around-origin [0 0])))))
