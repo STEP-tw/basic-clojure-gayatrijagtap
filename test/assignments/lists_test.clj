@@ -63,3 +63,7 @@
                `([1 4] [1 3] [1 5] [2 4] [2 3] [2 5] [3 4]) (cross-product [1 2 3] [4 3 5])
                `() (cross-product [1] [1])
                )))
+
+(deftest double-up-test
+  (testing "double-up"
+    (is (= `(1 1 2 2 3 3) (double-up [1 2 3])))))
