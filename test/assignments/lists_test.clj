@@ -40,3 +40,11 @@
     (is (= true (ascending? [1 2 3 4]))))
   (testing "are not ascending"
     (is (= false (ascending? [1 3 2 4])))))
+
+(deftest difference-test
+  (testing "get elements in coll2 not in coll1"
+    (are [x y] (= x y)
+               `(4 3) (difference [1 2] [1 2 3 4])
+               `() (difference [1 2] [1 2])
+               ))
+  )
