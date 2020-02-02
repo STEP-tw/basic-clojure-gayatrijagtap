@@ -72,7 +72,9 @@
 
 (deftest zero-separated-palindrome-test
   (testing "zero-seperated-palindrome"
-    (is (= `(4 3 2 0 2 3 4) (zero-separated-palindrome [1 2 3])))))
+    (are [x y] (= x y)
+               `(4 3 2 0 2 3 4) (zero-separated-palindrome [1 2 3])
+               `(2 0 2) (zero-separated-palindrome [1]))))
 
 (deftest repeat-and-truncate-test
   (testing "repeat-and-truncate"

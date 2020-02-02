@@ -10,14 +10,16 @@
                [1 2 3] (map' identity [1 2 3]))))
 
 (deftest filter-test
-  (testing "filter evens"
+  (testing "filter all evens"
     (is (= [2 4] (filter' even? [1 2 3 4]))))
-  (testing "filter odds"
+  (testing "filter all odds"
     (is (= [1 3] (filter' odd? [1 2 3 4])))))
 
 (deftest count-test
   (testing "count elements in coll"
-    (is (= 4 (count' [1 2 3 4])))))
+    (is (= 4 (count' [1 2 3 4]))))
+  (testing "should return 0 for empty coll"
+    (is (= 0 (count' [])))))
 
 (deftest reverse-test
   (testing "valid sequence"
@@ -45,15 +47,15 @@
 
 (deftest difference-test
   (testing "get elements in coll2 not in coll1"
-    (are [x y] (= x y)
-               `(4 3) (difference [1 2] [1 2 3 4])
-               `() (difference [1 2] [1 2]))))
+    (is (= `(4 3) (difference [1 2] [1 2 3 4]))))
+  (testing "should return empty list if both colls are same"
+    (is (= `() (difference [1 2] [1 2])))))
 
 (deftest union-test
-  (testing "union of two colls"
-    (are [x y] (= x y)
-               [1 2 3 4 5] (union [1 2 3] [3 4 5])
-               [1 2 3] (union [1 2 3] [1 2 3]))))
+  (testing "should return union of two colls"
+    (is (= [1 2 3 4 5] (union [1 2 3] [3 4 5]))))
+  (testing "should return same coll if both colls are same"
+    (is (= [1 2 3] (union [1 2 3] [1 2 3])))))
 
 (deftest points-around-origin-test
   (testing "points-around-origin"
@@ -79,35 +81,38 @@
     (is (= `(16 16 16) (sqr-of-the-first [4 5 6])))))
 
 (deftest split-comb-test
-  (testing "split-comb"
-    (are [x y] (= x y)
-               [1 3 2 4 5] (split-comb [1 2 3 4 5])
-               [1 3 2 4] (split-comb [1 2 3 4]))))
+  (testing "split-comb for odd number of elements"
+    (is (= [1 3 2 4 5] (split-comb [1 2 3 4 5]))))
+  (testing "split-comb for even number of elements"
+    (is (= [1 3 2 4] (split-comb [1 2 3 4])))))
 
 (deftest palindrome-test
-  (testing "palindrome"
+  (testing "check if given coll is a palindrome"
     (are [x y] (= x y)
                true (palindrome? [1 2 3 2 1])
                false (palindrome? [1 2 3 4 2 1])
                true (palindrome? [1 2 3 3 2 1]))))
 
 (deftest index-of-test
-  (testing "index-of"
+  (testing "return index of given number in the coll"
     (are [x y] (= x y)
                0 (index-of [1 2 3 4] 1)
-               3 (index-of [1 2 3 4] 4)
-               -1 (index-of [1 2 3 4] 9))))
+               3 (index-of [1 2 3 4] 4)))
+  (testing "return -1 if number doesn't exist in given coll"
+    (is (= -1 (index-of [1 2 3 4] 9)))))
 
 (deftest transpose-test
   (testing "transpose"
     (is (= [[1 3] [2 4]] (transpose [[1 2] [3 4]])))))
 
 (deftest reduce-test
-  (testing "reduce"
+  (testing "reduce without initial value"
     (are [x y] (= x y)
                15 (reduce' + [1 2 3 4 5])
+               120 (reduce' * [1 2 3 4 5])))
+  (testing "reduce with initial value"
+    (are [x y] (= x y)
                15 (reduce' + 1 [2 3 4 5])
-               120 (reduce' * [1 2 3 4 5])
                120 (reduce' * 2 [1 3 4 5]))))
 
 (deftest dedupe-test
