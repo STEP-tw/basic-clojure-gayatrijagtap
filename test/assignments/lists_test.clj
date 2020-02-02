@@ -109,3 +109,7 @@
                15 (reduce' + 1 [2 3 4 5])
                120 (reduce' * [1 2 3 4 5])
                120 (reduce' * 2 [1 3 4 5]))))
+
+(deftest dedupe-test
+  (testing "dedupe"
+    (is (= `(1 2 3 2 1) (dedupe [1 1 2 2 2 3 3 2 2 2 1 1 1 1])))))
