@@ -2,10 +2,12 @@
   (:require [clojure.test :refer :all]
             [assignments.lists :refer :all]))
 
-(deftest lists
+(deftest map-test
   (testing "map"
-    (testing "identity with single coll"
-      (is (= [1 2 3] (map' identity [1 2 3]))))))
+    (are [x y] (= x y)
+               [2 3 4 5] (map' inc [1 2 3 4])
+               [1 4 9 16] (map' (fn [x] (* x x)) [1 2 3 4])
+               [1 2 3] (map' identity [1 2 3]))))
 
 (deftest filter-test
   (testing "filter evens"
