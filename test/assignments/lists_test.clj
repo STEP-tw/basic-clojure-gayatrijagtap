@@ -121,3 +121,7 @@
 (deftest sum-of-adjacent-digits-test
   (testing "sum-of-adjacent-digits"
     (is (= `(3 5 7) (sum-of-adjacent-digits [1 2 3 4])))))
+
+(deftest muted-thirds-test
+  (testing "muted-thirds"
+    (is (= [1 2 0 4 5 0 7 8 0] (muted-thirds [1 2 3 4 5 6 7 8 9])))))

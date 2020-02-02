@@ -7,13 +7,13 @@
   {:level        :medium
    :use          '[loop recur]
    :dont-use     '[map]
-   :implemented? true}
-  [pred coll]
+   :implemented? false}
+  [f coll]
   (loop [acc [] coll coll]
     (let [curr-ele (first coll)]
       (if (empty? coll)
         acc
-        (recur (conj acc (pred curr-ele)) (rest coll))))))
+        (recur (conj acc (f curr-ele)) (rest coll))))))
 
 (defn filter'
   "Implement a non-lazy version of filter that accepts a
@@ -42,14 +42,14 @@
    :use          '[loop recur]
    :dont-use     '[reduce]
    :implemented? true}
-  ([pred coll]
-   (loop [red-coll (rest coll) acc (first coll)]
+  ([f coll]
+   (loop [red-coll (rest coll) init (first coll)]
      (let [curr-ele (first red-coll)]
        (if (empty? red-coll)
-         acc
-         (recur (rest red-coll) (pred acc curr-ele))))))
-  ([pred acc coll]
-   (reduce' pred (cons acc coll))))
+         init
+         (recur (rest red-coll) (f init curr-ele))))))
+  ([f init coll]
+   (reduce' f (cons init coll))))
 
 (defn count'
   "Implement your own version of count that counts the
@@ -281,8 +281,9 @@
   {:level        :easy
    :use          '[map cycle]
    :dont-use     '[loop recur map-indexed take take-nth]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll]
+  (map * coll (cycle [1 1 0])))
 
 (defn palindrome?
   "Implement a recursive palindrome check of any given sequence"
