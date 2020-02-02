@@ -122,7 +122,8 @@
    :use          '[lazy-seq set conj let :optionally letfn]
    :dont-use     '[loop recur distinct]
    :implemented? false}
-  [coll])
+  [coll]
+  (lazy-seq (set coll)))
 
 (defn dedupe'
   "Implement your own lazy sequence version of dedupe which returns
