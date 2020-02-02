@@ -152,7 +152,8 @@
   "Transposes a given matrix.
   [[a b] [c d]] => [[a c] [b d]].
   Note this is a def. Not a defn.
-  Return a vector of vectors, not list of vectors or vectors of lists")
+  Return a vector of vectors, not list of vectors or vectors of lists"
+  (partial apply mapv vector))
 
 (defn difference
   "Given two collections, returns only the elements that are present

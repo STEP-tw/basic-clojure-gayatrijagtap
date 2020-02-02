@@ -95,3 +95,7 @@
                0 (index-of [1 2 3 4] 1)
                3 (index-of [1 2 3 4] 4)
                -1 (index-of [1 2 3 4] 9))))
+
+(deftest transpose-test
+  (testing "transpose"
+    (is (= [[1 3] [2 4]] (transpose [[1 2] [3 4]])))))
