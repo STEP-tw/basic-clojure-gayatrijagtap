@@ -112,8 +112,12 @@
 
 (deftest dedupe-test
   (testing "dedupe"
-    (is (= `(1 2 3 2 1) (dedupe [1 1 2 2 2 3 3 2 2 2 1 1 1 1])))))
+    (is (= `(1 2 3 2 1) (dedupe' [1 1 2 2 2 3 3 2 2 2 1 1 1 1])))))
 
 (deftest distinct-test
   (testing "distinct"
     (is (= `(1 4 3 2 5) (distinct' [1 2 3 4 2 3 1 3 4 3 4 5])))))
+
+(deftest sum-of-adjacent-digits-test
+  (testing "sum-of-adjacent-digits"
+    (is (= `(3 5 7) (sum-of-adjacent-digits [1 2 3 4])))))

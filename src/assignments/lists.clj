@@ -7,7 +7,7 @@
   {:level        :medium
    :use          '[loop recur]
    :dont-use     '[map]
-   :implemented? false}
+   :implemented? true}
   [pred coll]
   (loop [acc [] coll coll]
     (let [curr-ele (first coll)]
@@ -41,7 +41,7 @@
   {:level        :medium
    :use          '[loop recur]
    :dont-use     '[reduce]
-   :implemented? false}
+   :implemented? true}
   ([pred coll]
    (loop [red-coll (rest coll) acc (first coll)]
      (let [curr-ele (first red-coll)]
@@ -121,7 +121,7 @@
   {:level        :medium
    :use          '[lazy-seq set conj let :optionally letfn]
    :dont-use     '[loop recur distinct]
-   :implemented? false}
+   :implemented? true}
   [coll]
   (lazy-seq (set coll)))
 
@@ -132,7 +132,7 @@
   {:level        :medium
    :use          '[lazy-seq conj let :optionally letfn]
    :dont-use     '[loop recur dedupe]
-   :implemented? false}
+   :implemented? true}
   [coll]
   (lazy-seq (map first (partition-by identity coll))))
 
@@ -142,8 +142,9 @@
   {:level        :medium
    :use          '[map + rest]
    :dont-use     '[loop recur partition]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll]
+  (map (fn [[x y]] (+ x y)) (partition 2 1 coll)))
 
 (defn max-three-digit-sequence
   "Given a collection of numbers, find a three digit sequence that
