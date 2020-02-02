@@ -101,3 +101,11 @@
 (deftest transpose-test
   (testing "transpose"
     (is (= [[1 3] [2 4]] (transpose [[1 2] [3 4]])))))
+
+(deftest reduce-test
+  (testing "reduce"
+    (are [x y] (= x y)
+               15 (reduce' + [1 2 3 4 5])
+               15 (reduce' + 1 [2 3 4 5])
+               120 (reduce' * [1 2 3 4 5])
+               120 (reduce' * 2 [1 3 4 5]))))

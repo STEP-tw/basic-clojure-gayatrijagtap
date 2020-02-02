@@ -42,8 +42,14 @@
    :use          '[loop recur]
    :dont-use     '[reduce]
    :implemented? false}
-  ([f coll])
-  ([f init coll]))
+  ([pred coll]
+   (loop [red-coll (rest coll) acc (first coll)]
+     (let [curr-ele (first red-coll)]
+       (if (empty? red-coll)
+         acc
+         (recur (rest red-coll) (pred acc curr-ele))))))
+  ([pred acc coll]
+   (reduce' pred (cons acc coll))))
 
 (defn count'
   "Implement your own version of count that counts the
