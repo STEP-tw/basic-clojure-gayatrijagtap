@@ -28,11 +28,10 @@
     (let [curr-ele (first coll)]
       (if (zero? (count coll))
         acc
-        (recur (if (true? (pred curr-ele)) (conj acc curr-ele) acc) (rest coll))
-        )
-      )
-    )
-  )
+        (recur (if (true? (pred curr-ele))
+                 (conj acc curr-ele)
+                 acc)
+               (rest coll))))))
 
 (defn reduce'
   "Implement your own multi-arity version of reduce
@@ -75,9 +74,7 @@
         (if (empty? coll)
           acc
           (recur (conj acc curr-ele) (rest coll))))
-      nil)
-    )
-  )
+      nil)))
 
 (defn every?'
   "Implement your own version of every? that checks if every
@@ -89,7 +86,9 @@
   [pred coll]
   (loop [acc true coll coll]
     (let [curr-ele (first coll)]
-      (if (empty? coll) acc (recur (and acc (pred curr-ele)) (rest coll))))))
+      (if (empty? coll)
+        acc
+        (recur (and acc (pred curr-ele)) (rest coll))))))
 
 (defn some?'
   "Implement your own version of some that checks if at least one
@@ -103,7 +102,9 @@
   [pred coll]
   (loop [acc false coll coll]
     (let [curr-ele (first coll)]
-      (if (empty? coll) acc (recur (or acc (pred curr-ele)) (rest coll))))))
+      (if (empty? coll)
+        acc
+        (recur (or acc (pred curr-ele)) (rest coll))))))
 
 (defn ascending?
   "Verify if every element is greater than or equal to its predecessor"
@@ -203,8 +204,7 @@
   Note this is a def, not a defn"
   (fn [[px py]]
     (for [x (range -1 2) y (range -1 2)]
-      [(+ px x) (+ py y)]
-      )))
+      [(+ px x) (+ py y)])))
 
 (defn cross-product
   "Given two sequences, generate every combination in the sequence
@@ -272,7 +272,9 @@
         split (split-at mid coll)
         is-even? (even? (count (last split)))]
     (let [op (vec (apply interleave split))]
-      (if is-even? op (conj op (last (apply concat split)))))))
+      (if is-even?
+        op
+        (conj op (last (apply concat split)))))))
 
 (defn muted-thirds
   "Given a sequence of numbers, make every third element

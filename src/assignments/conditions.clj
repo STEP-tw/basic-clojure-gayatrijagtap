@@ -5,14 +5,17 @@
   {:level        :easy
    :use          '[when-not zero?]
    :implemented? true}
-  [x y] (when-not (zero? y) (/ x y)))
+  [x y] (when-not (zero? y)
+          (/ x y)))
 
 (defn informative-divide
   "Returns the result of x/y unless y is 0. Returns :infinite when y is 0"
   {:level        :easy
    :use          '[if-not zero?]
    :implemented? true}
-  [x y] (if-not (zero? y) (/ x y) :infinite))
+  [x y] (if-not (zero? y)
+          (/ x y)
+          :infinite))
 
 (defn harishchandra
   "Only returns truthy values as themselves.
@@ -20,7 +23,8 @@
   {:level        :easy
    :use          '[when-let]
    :implemented? true}
-  [x] (when-let [value x] value))
+  [x] (when-let [value x]
+        value))
 
 (defn yudishtira
   "Only returns truthy values as themselves.
@@ -28,7 +32,9 @@
   {:level        :easy
    :use          '[if-let]
    :implemented? true}
-  [x] (if-let [value x] value :ashwathama))
+  [x] (if-let [value x]
+        value
+        :ashwathama))
 
 (defn duplicate-first
   "Returns coll with the first element duplicated.
@@ -37,7 +43,8 @@
    :use          '[when-first concat]
    :alternates   '[empty? seq? conj into]
    :implemented? true}
-  [coll] (when-first [x coll] (concat (list x) coll)))
+  [coll] (when-first [x coll]
+           (concat (list x) coll)))
 
 (defn five-point-someone
   "Returns :chetan-bhagat if y is 5.
