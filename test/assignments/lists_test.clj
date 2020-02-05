@@ -130,3 +130,9 @@
 (deftest muted-thirds-test
   (testing "muted-thirds"
     (is (= [1 2 0 4 5 0 7 8 0] (muted-thirds [1 2 3 4 5 6 7 8 9])))))
+
+(deftest max-three-digit-sequence-test
+  (testing "max-three-digit-sequence"
+    (are [x y] (= x y)
+               [2 3 4] (max-three-digit-sequence [1 2 3 4])
+               [2 -1 2] (max-three-digit-sequence [1 2 -1 2 0]))))
