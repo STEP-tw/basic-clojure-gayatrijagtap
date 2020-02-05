@@ -69,12 +69,11 @@
    :implemented? true}
   [coll]
   (loop [acc `() coll coll]
-    (if (seqable? coll)
+    (when (seqable? coll)
       (let [curr-ele (first coll)]
         (if (empty? coll)
           acc
-          (recur (conj acc curr-ele) (rest coll))))
-      nil)))
+          (recur (conj acc curr-ele) (rest coll)))))))
 
 (defn every?'
   "Implement your own version of every? that checks if every
@@ -189,8 +188,7 @@
    :use          '[remove into set ->>]
    :implemented? true}
   [coll1 coll2]
-  (->> (remove (set coll1) (set coll2))
-       (into coll1)))
+  (into coll1 (remove (set coll1) (set coll2))))
 
 ;; points-around-origin is a def not a defn
 (def
@@ -245,7 +243,7 @@
    :implemented? true}
   [coll]
   (let [num-to-repeat (constantly (* (first coll) (first coll)))]
-    (map (fn [x] (num-to-repeat x)) coll)))
+    (map num-to-repeat coll)))
 
 (defn russian-dolls
   "Given a collection and a number, wrap each element in a nested vector
