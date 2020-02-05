@@ -82,3 +82,11 @@
                `(1 2 3 1 2 3) (repeat-and-truncate [1 2 3] true true 6)
                `(1 2 1 2) (repeat-and-truncate [1 2] true false 7)
                `(1 2) (repeat-and-truncate [1 2] false true 4))))
+
+(deftest conditions-apply-test
+  (testing "conditions-apply"
+    (are [x y] (= x y)
+               :wonder-woman (conditions-apply [1 2 3])
+               :wonder-woman (conditions-apply [1 3])
+               :tuntun (conditions-apply [1 2])
+               :tuntun (conditions-apply [1 3 1 2]))))
