@@ -234,7 +234,10 @@
    :use          '[keep-indexed when :optionally map-indexed filter]
    :implemented? true}
   [coll]
-  (keep-indexed (fn [i x] (when (or (zero? (mod i 3)) (zero? (mod i 5))) x)) coll))
+  (keep-indexed (fn [i x]
+                  (when (or (zero? (mod i 3))
+                            (zero? (mod i 5))) x))
+                coll))
 
 (defn sqr-of-the-first
   "Given a collection, return a new collection that contains the
@@ -255,8 +258,11 @@
   {:level        :medium
    :use          '[iterate mapv partial vector drop first ->>]
    :dont-use     '[for loop recur reduce]
-   :implemented? false}
-  [coll nesting-factor])
+   :implemented? true}
+  [coll nesting-factor]
+  (let [dec-nesting-factor (dec nesting-factor)]
+    (mapv (fn [x]
+            (vec (drop (dec dec-nesting-factor) (take dec-nesting-factor (iterate vector x))))) coll)))
 
 (defn split-comb
   "Given a collection, return a new sequence where the first
